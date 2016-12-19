@@ -8,6 +8,7 @@ var Form = React.createClass({
   render: function() {
     return (
     	<div className="query-form">
+    		<h2>Search NYT</h2>
     		<form className="col s12">
     			<div className = "row">
 					<div className="input-field col s12">
@@ -29,7 +30,7 @@ var Form = React.createClass({
 						<label for="last_name">End Year</label>
 					</div>
 				</div>
-				<a className="waves-effect waves-light btn-large">Button</a>
+				<a className="waves-effect waves-light btn-large right">Button</a>
 			</form>
     	</div>
     );

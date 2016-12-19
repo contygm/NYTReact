@@ -13,15 +13,15 @@ var Results = React.createClass({
 					<i className="material-icons circle">folder</i>
 					<span className="title">Article Title</span>
 					<p>Date Line</p>
-					<a className="waves-effect waves-light btn"><i className="material-icons left">note_add</i>Save</a>
-					<a className="waves-effect waves-light btn"><i className="material-icons left">subject</i>View</a>
+					<a className="waves-effect waves-light btn right"><i className="material-icons left">note_add</i>Save</a>
+					<a className="waves-effect waves-light btn right"><i className="material-icons left">subject</i>View</a>
 				</li>
 				<li className="collection-item active avatar">
 					<i className="material-icons circle red">folder</i>
 					<span className="title">Article Title</span>
 					<p>Date Line</p>
-					<a className="waves-effect waves-light btn"><i className="material-icons left">note_add</i>Save</a>
-					<a className="waves-effect waves-light btn"><i className="material-icons left">subject</i>View</a>
+					<a className="waves-effect waves-light btn right"><i className="material-icons left">note_add</i>Save</a>
+					<a className="waves-effect waves-light btn right"><i className="material-icons left">subject</i>View</a>
 				</li>
 		    </ul>
     	</div>
