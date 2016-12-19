@@ -1,8 +1,8 @@
 // Include React
 var React = require("react");
 
-var Saved = require("./Saved.js");
-var Search = require("./Search.js");
+var Saved = require("./children/Saved.js");
+var Search = require("./children/Search.js");
 
 // Creating the Results component
 var Main = React.createClass({
@@ -15,16 +15,18 @@ var Main = React.createClass({
 					<div className="nav-wrapper">
 						<a href="#" className="brand-logo">NYT React</a>
 						<ul id="nav-mobile" className="right hide-on-med-and-down">
-							<li><a href="#">Saved</a></li>
 							<li><a href="#">Search</a></li>
+							<li><a href="#">Saved</a></li>
 						</ul>
 					</div>
 				</nav>
 
 				{/*components*/}
-				<div className="row">
-					<Search />
-					<Saved />
+				<div className="container">
+					<div className="row">
+						<Search />
+						<Saved />
+					</div>
 				</div>
 
 				{/*footer section...bet you didn't see that coming*/}
