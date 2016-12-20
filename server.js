@@ -37,21 +37,27 @@ db.once("open", function() {
 
 // -------------------------------------------------
 
-// Main "/" Route. This will redirect the user to our rendered React application
+
+
+// get all saved articles
+app.get("/api/saved", function(req, res) {
+
+});
+
+// save article to database
+app.post("/api/saved", function(req, res) {
+
+});
+
+// delete a saved article
+app.delete("/api/saved", function(req, res) {
+
+});
+
+// Main "/" Route
 app.get("/", function(req, res) {
   res.sendFile(__dirname + "/public/index.html");
 });
-
-// This is the route we will send GET requests to retrieve our most recent search data.
-// We will call this route the moment our page gets rendered
-// app.get("/api", function(req, res) {
-
-// });
-
-// This is the route we will send POST requests to save each search.
-// app.post("/api", function(req, res) {
-
-// });
 
 // -------------------------------------------------
 
