@@ -26,7 +26,7 @@ var Form = React.createClass({
 		this.setState({
 			topic: "",
 			startYear: "",
-			endYear: 
+			endYear: ""
 		});
 	},
 	// Here we render the function

@@ -7,7 +7,7 @@
 var React = require("react");
 
 // Helper for making AJAX requests to our API
-var helpers = require("../utils/helpers");
+var helpers = require("../utils/helper");
 
 // Creating the saved articles component
 var Saved = React.createClass({	
@@ -17,9 +17,9 @@ var Saved = React.createClass({
 	// render saved articles on load
 	componentDidMount: function(){
 		helpers.getSaved()
-			.then(function(response)){
+			.then(function(response){
 				this.setState({ savedArticles: response.data})
-			}.bind(this);
+			}.bind(this));
 	},
 	// Here we render the function
 	render: function() {

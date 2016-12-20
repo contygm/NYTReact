@@ -5,7 +5,7 @@ var Form = require("./grandchildren/Form.js");
 var Results = require("./grandchildren/Results.js");
 
 // Helper for making AJAX requests to our API
-var helpers = require("../utils/helpers");
+var helpers = require("../utils/helper");
 
 // Creating the Results component
 var Search = React.createClass({
@@ -27,8 +27,7 @@ var Search = React.createClass({
 			.then(function(data){
 				console.log("Query ran", data);
 				this.setState({ searchResults: data});
-			});
-		}.bind(this);
+			}.bind(this));
 	},
 	// Here we render the function
 	render: function() {
