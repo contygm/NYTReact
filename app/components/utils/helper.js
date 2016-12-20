@@ -7,10 +7,12 @@ var helper = {
 	runQuery: function(topic, startYear, endYear){
 		console.log(topic, startYear, endYear);
 
+		// fix inputs so they match nyt api's format
 		var fixedTopic = topic.trim();
     	var fixedStartYear = startYear.trim() + "0101";
     	var fixedEndYear = endYear.trim() + "1231";
 
+    	// get articles based on topic, startYear & endYear
 		return axios.get("https://api.nytimes.com/svc/search/v2/articlesearch.json", {
 			params: {
 				"api-key": authKey,
@@ -34,7 +36,7 @@ var helper = {
 	},
 
 	// TODO: save new articles
-	addSaved: function(){
+	postSaved: function(title, date, url){
 		return axios.post("/api/saved");
 	}, 
 	// TODO: delete an article
