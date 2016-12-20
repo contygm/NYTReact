@@ -22,7 +22,7 @@ var Main = React.createClass({
 				</nav>
 
 				{/*components*/}
-				<div className="container">
+				<div className="container" id = "reactComponents">
 					<div className="row">
 						<Search />
 						<Saved />
