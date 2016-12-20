@@ -1,20 +1,36 @@
 var axios = require("axios");
 
-var authKey = "b9f91d369ff59547cd47b931d8cbc56b:0:74623931";
-
-var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + authKey + "&q=";
+var authKey = "c91b91416829443690df9370e731436a";
 
 var helper = {
 
 	runQuery: function(topic, startYear, endYear){
 		console.log(topic, startYear, endYear);
 
+		var fixedTopic = topic.trim();
+    	var fixedStartYear = startYear.trim() + "0101";
+    	var fixedEndYear = endYear.trim() + "1231";
 
+		return axios.get("https://api.nytimes.com/svc/search/v2/articlesearch.json", {
+			params: {
+				"api-key": authKey,
+				"q": fixedTopic,
+				"begin_date": fixedStartYear,
+				"end_date": fixedEndYear
+			}
+		}).then(function(results) {
+			console.log("Axios Results", results.data.response);
+			return results.data.response;
+		});
 	},
 
 	// get saved articles
 	getSaved: function(){
-		return axios.get("/api/saved");
+		return axios.get("/api/saved")
+			.then(function(results){
+				console.log("Saved Articles: ", results);
+				return results;
+			})
 	},
 
 	// TODO: save new articles
