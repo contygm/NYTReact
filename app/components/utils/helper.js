@@ -35,13 +35,28 @@ var helper = {
 			})
 	},
 
-	// TODO: save new articles
+	// save new articles
 	postSaved: function(title, date, url){
-		return axios.post("/api/saved");
+		var newArticle = { title: title, date: date, url: url};
+
+		return axios.post("/api/saved", newArticle)
+			.then(function(response){
+				console.log("newArticle id: ", response.data._id);
+				return response.data._id;
+			});
 	}, 
-	// TODO: delete an article
-	deleteSaved: function(id){
-		return axios.delete("/api/saved", { _id: id});
+	// delete an article
+	deleteSaved: function(title, date, url){
+		return axios.delete("/api/saved", {
+			params: {
+				"title": title,
+				"date": date,
+				"url": url
+			}
+		}).then(function(results){
+			console.log("deletedSaved: ", results);
+			return results;
+		})
 	}
 };
 
