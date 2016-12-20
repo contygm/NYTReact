@@ -23,7 +23,7 @@ var Form = React.createClass({
 		this.setState({endYear: event.target.value});
 		console.log("endYear: " + event.target.value);
 	},
-	handleSumbit: function(event){
+	handleSubmit: function(event){
 		event.preventDefault();
 		console.log(this.state.topic, this.state.startYear, this.state.endYear);
 
@@ -44,7 +44,7 @@ var Form = React.createClass({
 						<div className="input-field col s12">
 							<input id="topic" type="text" className="validate" 
 							onChange={this.handleChangeTopic} value={this.state.topic}/>
-							<label for="topic">Topic</label>
+							<label>Topic</label>
 						</div>	
 					</div>	
 
@@ -52,7 +52,7 @@ var Form = React.createClass({
 						<div className="input-field col s12">
 							<input id="startYear" type="text" className="validate" 
 							onChange={this.handleChangeStartYear} value={this.state.startYear}/>
-							<label for="startYear">Start Year</label>
+							<label>Start Year</label>
 						</div>
 					</div>
 
@@ -60,7 +60,7 @@ var Form = React.createClass({
 						<div className="input-field col s12">
 							<input id="endYear" type="text" className="validate" 
 							onChange={this.handleChangeEndYear} value={this.state.endYear}/>
-							<label for="endYear">End Year</label>
+							<label>End Year</label>
 						</div>
 					</div>
 					<button className="btn waves-effect waves-light right" type="submit">Submit

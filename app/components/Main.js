@@ -12,7 +12,10 @@ var Main = React.createClass({
 	getInitialState: function(){
 		return { 
 			savedArticles: [],
-			searchResults: []
+			searchResults: [],
+			topic: "",
+			startYear: "",
+			endYear: ""
 		};
 	},
 	// render saved articles on load
@@ -32,7 +35,14 @@ var Main = React.createClass({
 				this.setState({ searchResults: data});
 			}.bind(this));
 	},
-
+	//get serch terms from form
+	setSearchTerms: function(topic, startYear, endYear){
+		this.setState({ 
+			topic: topic,
+			startYear: startYear,
+			endYear: endYear
+		})
+	},
 	// Here we render the function
 	render: function() {
 		return (
@@ -50,7 +60,9 @@ var Main = React.createClass({
 				{/*components  */ }
 				<div className="container" id = "reactComponents">
 					<div className="row">
-						<Search searchResults={this.state.searchResults}/>	
+						<Search searchResults={this.state.searchResults} 
+							setSearchTerms = {this.state.setSearchTerms}/>	
+						
 						<Saved savedArticles={this.state.savedArticles}/>
 					</div>
 				</div>
