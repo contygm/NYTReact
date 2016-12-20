@@ -11,16 +11,21 @@ var Form = React.createClass({
 			endYear: ""
 		}
 	},
-	handleChange: function(event){
-		console.log(event.target.value);
-		this.setState({
-			topic: event.target.value[0],
-			startYear: event.target.value[1],
-			endYear: event.target.value[2]
-		});
+	handleChangeTopic: function(event){
+		this.setState({topic: event.target.value});
+		console.log("topic: " + event.target.value);
+	},
+	handleChangeStartYear: function(event){
+		this.setState({startYear: event.target.value});
+		console.log("startYear: " + event.target.value);
+	},
+	handleChangeEndYear: function(event){
+		this.setState({endYear: event.target.value});
+		console.log("endYear: " + event.target.value);
 	},
 	handleSumbit: function(event){
 		event.preventDefault();
+		console.log(this.state.topic, this.state.startYear, this.state.endYear);
 
 		this.props.setSearchTerms(this.state.topic, this.state.startYear, this.state.endYear);
 		this.setState({
@@ -37,25 +42,29 @@ var Form = React.createClass({
 	    		<form className="col s12" onSubmit={this.handleSubmit}>
 	    			<div className = "row">
 						<div className="input-field col s12">
-							<input id="last_name" type="text" className="validate" onChange={this.handleChange} value={this.state.topic}/>
-							<label for="last_name">Topic</label>
+							<input id="topic" type="text" className="validate" 
+							onChange={this.handleChangeTopic} value={this.state.topic}/>
+							<label for="topic">Topic</label>
 						</div>	
 					</div>	
 
 					<div className = "row">
 						<div className="input-field col s12">
-							<input id="last_name" type="text" className="validate" onChange={this.handleChange} value={this.state.startYear}/>
-							<label for="last_name">Start Year</label>
+							<input id="startYear" type="text" className="validate" 
+							onChange={this.handleChangeStartYear} value={this.state.startYear}/>
+							<label for="startYear">Start Year</label>
 						</div>
 					</div>
 
 					<div className = "row">
 						<div className="input-field col s12">
-							<input id="last_name" type="text" className="validate" onChange={this.handleChange} value={this.state.endYear}/>
-							<label for="last_name">End Year</label>
+							<input id="endYear" type="text" className="validate" 
+							onChange={this.handleChangeEndYear} value={this.state.endYear}/>
+							<label for="endYear">End Year</label>
 						</div>
 					</div>
-					<a className="waves-effect waves-light btn-large right" type="submit">Button</a>
+					<button className="btn waves-effect waves-light right" type="submit">Submit
+  					</button>
 				</form>
 	    	</div>
 	    );

@@ -4,38 +4,31 @@ var React = require("react");
 var Form = require("./grandchildren/Form.js");
 var Results = require("./grandchildren/Results.js");
 
-// Helper for making AJAX requests to our API
-var helpers = require("../utils/helper");
-
 // Creating the Results component
 var Search = React.createClass({
 	getInitialState: function(){
-		return { searchResults: ""};
+		return { 
+			topic: "",
+			startYear: "",
+			endYear: "";
+		}
 	},
 	//get serch terms from form
-	setSearchTerms: function(title, date, url){
+	setSearchTerms: function(topic, startYear, endYear){
 		this.setState({ 
-			title: title,
-			date: date,
-			url: url
+			topic: topic,
+			startYear: startYear,
+			endYear: endYear
 		})
 	},	
-	// update results component when search entered and get results
-	componentDidUpdate: function(){
-		//run nyt query with search terms
-		helpers.runQuery(this.state.title, this.state.date, this.state.url)
-			.then(function(data){
-				console.log("Query ran", data);
-				this.setState({ searchResults: data});
-			}.bind(this));
-	},
+	
 	// Here we render the function
 	render: function() {
 		return (
 			<div className="row">
 				{/* pass function & searchResults to components*/}
 				<Form setSearchTerms = {this.setSearchTerms}/>
-				<Results results={this.state.searchResults}/>
+				<Results searchResults={this.props.searchResults}/>
 			</div>
 		);
 	}

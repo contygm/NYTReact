@@ -1,26 +1,12 @@
 // TODO: 
 // - delete button
-// - move to own page 
-//		- app/pinnedArticles --> render(whatever)
 
 // Include React
 var React = require("react");
 
-// Helper for making AJAX requests to our API
-var helpers = require("../utils/helper");
-
 // Creating the saved articles component
 var Saved = React.createClass({	
-	getInitialState: function(){
-		return { savedArticles: ""};
-	},
-	// render saved articles on load
-	componentDidMount: function(){
-		helpers.getSaved()
-			.then(function(response){
-				this.setState({ savedArticles: response.data})
-			}.bind(this));
-	},
+	
 	// Here we render the function
 	render: function() {
 	    return (
@@ -29,7 +15,7 @@ var Saved = React.createClass({
 		    		<h2>Saved Articles</h2>
 				    <ul className="collection">
 				        {/* Here we use a map function to loop through savedArticles*/}
-					    {this.state.savedArticles.map(function(search, i){
+					    {this.props.savedArticles.map(function(search, i){
 					    	return(
 					    		<li className="collection-item avatar" key={i}>
 									<i className="material-icons circle">folder</i>

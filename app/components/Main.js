@@ -4,9 +4,36 @@ var React = require("react");
 var Saved = require("./children/Saved.js");
 var Search = require("./children/Search.js");
 
+// Helper for making AJAX requests to our API
+var helpers = require("./utils/helper");
+
 // Creating the Results component
 var Main = React.createClass({
-  // Here we render the function
+	getInitialState: function(){
+		return { 
+			savedArticles: [],
+			searchResults: []
+		};
+	},
+	// render saved articles on load
+	componentDidMount: function(){
+		helpers.getSaved()
+			.then(function(response){
+				this.setState({ savedArticles: response.data})
+			}.bind(this));
+	},
+
+	// update results component when search entered and get results
+	componentDidUpdate: function(){
+		//run nyt query with search terms
+		helpers.runQuery(this.state.topic, this.state.startYear, this.state.endYear)
+			.then(function(data){
+				console.log("Query ran", data);
+				this.setState({ searchResults: data});
+			}.bind(this));
+	},
+
+	// Here we render the function
 	render: function() {
 		return (
 			<div className="main-layout">
@@ -15,17 +42,16 @@ var Main = React.createClass({
 					<div className="nav-wrapper">
 						<a href="#" className="brand-logo">NYT React</a>
 						<ul id="nav-mobile" className="right hide-on-med-and-down">
-							<li><a href="#">Search</a></li>
-							<li><a href="#">Saved</a></li>
+							<li><a href="#">About</a></li>
 						</ul>
 					</div>
 				</nav>
 
-				{/*components*/}
+				{/*components  */ }
 				<div className="container" id = "reactComponents">
 					<div className="row">
-						<Search />
-						<Saved />
+						<Search searchResults={this.state.searchResults}/>	
+						<Saved savedArticles={this.state.savedArticles}/>
 					</div>
 				</div>
 
