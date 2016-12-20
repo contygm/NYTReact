@@ -34,9 +34,9 @@ var Search = React.createClass({
 	render: function() {
 		return (
 			<div className="row">
-				{/* pass function to form as prop; pass searchResults to component as state*/}
+				{/* pass function & searchResults to components*/}
 				<Form setSearchTerms = {this.setSearchTerms}/>
-				<Results results={this.state.results}/>
+				<Results results={this.state.searchResults}/>
 			</div>
 		);
 	}

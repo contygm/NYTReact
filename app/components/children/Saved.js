@@ -10,7 +10,10 @@ var React = require("react");
 var helpers = require("../utils/helpers");
 
 // Creating the saved articles component
-var Saved = React.createClass({
+var Saved = React.createClass({	
+	getInitialState: function(){
+		return { savedArticles: ""};
+	},
 	// render saved articles on load
 	componentDidMount: function(){
 		helpers.getSaved()
@@ -25,13 +28,18 @@ var Saved = React.createClass({
 	    		<div className="results col s12">
 		    		<h2>Saved Articles</h2>
 				    <ul className="collection">
-				        <li className="collection-item avatar">
-							<i className="material-icons circle green">folder</i>
-							<span className="title">Article Title</span>
-							<br/><span>Date Line</span>
-							<a className="waves-effect waves-light btn"><i className="material-icons left">no_sim</i>Delete</a>
-							<a className="waves-effect waves-light btn"><i className="material-icons left">subject</i>View</a>
-						</li>
+				        {/* Here we use a map function to loop through savedArticles*/}
+					    {this.state.savedArticles.map(function(search, i){
+					    	return(
+					    		<li className="collection-item avatar" key={i}>
+									<i className="material-icons circle">folder</i>
+									<span className="title">{search.title}</span>
+									<p>{search.date}</p>
+									<a className="waves-effect waves-light btn right"><i className="material-icons left">note_add</i>Save</a>
+									<a href={search.url}className="waves-effect waves-light btn right"><i className="material-icons left">subject</i>View</a>
+								</li>
+					    	)
+					    })} 
 				    </ul>
 	    		</div>
 	    	</div>

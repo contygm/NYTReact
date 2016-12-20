@@ -3,8 +3,7 @@ var React = require("react");
 
 
 // Creating the Results component
-var Form = React.createClass({
-  
+var Form = React.createClass({ 
 	getInitialState: function(){
 		return {
 			topic: "",
@@ -12,20 +11,18 @@ var Form = React.createClass({
 			endYear: ""
 		}
 	},
-
 	handleChange: function(event){
+		console.log(event.target.value);
 		this.setState({
 			topic: event.target.value[0],
 			startYear: event.target.value[1],
 			endYear: event.target.value[2]
-		})
+		});
 	},
 	handleSumbit: function(event){
 		event.preventDefault();
 
-		this.props.setTerm(this.state.topic);
-		//this.props.setStartYear(this.state.topic);
-		//this.props.setEndYear(this.state.topic);
+		this.props.setSearchTerms(this.state.topic, this.state.startYear, this.state.endYear);
 		this.setState({
 			topic: "",
 			startYear: "",
