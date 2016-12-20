@@ -37,21 +37,50 @@ db.once("open", function() {
 
 // -------------------------------------------------
 
-
-
 // get all saved articles
 app.get("/api/saved", function(req, res) {
-
+	Article.find({})
+	.sort([["date", "descending"]])
+	.exec(function(err, doc) {
+	    if (err) {
+	      console.log(err);
+	    }
+	    else {
+	      res.send(doc);
+	    }
+	});
 });
 
 // save article to database
 app.post("/api/saved", function(req, res) {
-
+	Article.create({
+		title: req.body.title,
+		date: Date.now(),
+		url: req.body.url
+	},function(err) {
+	    if (err) {
+	      console.log(err);
+	    }
+	    else {
+	      res.send("Saved Search");
+	    }
+	});
 });
 
 // delete a saved article
 app.delete("/api/saved", function(req, res) {
+	var id = req.param("id");
 
+	Article.find({_id: id})
+	.remove()
+	.exec(function(err, data){
+		if(err){
+	      console.log(err);
+	    }
+	    else {
+	      res.send("Deleted the article");
+	    }
+	})
 });
 
 // Main "/" Route
