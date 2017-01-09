@@ -16,19 +16,12 @@ var Saved = React.createClass({
 						<div className="panel-heading">
 							Saved Articles
 						</div>
-						<div className="panel-body">
-							<ul class="list-group">
-								<li className="list-group-item">
-									<h3>Article Name</h3>
-									<a className="btn btn-danger" href="#">Read more</a>
-									<a href="#" className="btn btn-danger">Delete</a>
-								</li>
-								<li className="list-group-item">
-									<h3>Article Name</h3>
-									<a className="btn btn-danger" href="#">Read more</a>
-									<a href="#" className="btn btn-danger">Delete</a>
-								</li>
-							</ul>
+						<div className="panel-body list-group">
+							<div className="list-group-item">
+								<h3>Article Name</h3>
+								<a className="btn btn-info" href="#">Read more</a>
+								<a href="#" className="btn btn-danger">Delete</a>
+							</div>
 						</div>
 					</div>
 				</div>

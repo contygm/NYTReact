@@ -37,21 +37,30 @@ var Form = React.createClass({
 	// Here we render the function
 	render: function() {
 	    return (
-	    	<form>
-				<div className="form-group">
-					<label for="">Search Term</label>
-					<input type="email" className="form-control" id="" placeholder="Topic"/>
+	    	<div className="col-sm-12">
+		    	<div className="panel panel-primary">
+		    		<div className="panel-heading">
+						Search the New York Times
+					</div>
+					<div className="panel-body">
+				    	<form>
+							<div className="form-group">
+								<label for="">Search Term</label>
+								<input type="email" className="form-control" id="" placeholder="Topic"/>
+							</div>
+							<div className="form-group">
+								<label for="">Start Date</label>
+								<input type="password" className="form-control" id="" placeholder="Password"/>
+							</div>
+							<div className="form-group">
+								<label for="">End Date</label>
+								<input type="password" className="form-control" id="" placeholder="Password"/>
+							</div>
+							<button type="submit" className="btn btn-warning">Submit</button>
+						</form>
+					</div>
 				</div>
-				<div className="form-group">
-					<label for="">Start Date</label>
-					<input type="password" className="form-control" id="" placeholder="Password"/>
-				</div>
-				<div className="form-group">
-					<label for="">End Date</label>
-					<input type="password" className="form-control" id="" placeholder="Password"/>
-				</div>
-				<button type="submit" className="btn btn-default">Submit</button>
-			</form>
+			</div>
 	    );
   	}
 });

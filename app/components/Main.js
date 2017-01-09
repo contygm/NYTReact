@@ -69,7 +69,7 @@ var Main = React.createClass({
 
 				{/*components  */ }
 				<div className="container">
-					{/*<Search />*/}	
+					<Search />	
 					<Saved />
 					{/*<About  />*/}
 				</div>
