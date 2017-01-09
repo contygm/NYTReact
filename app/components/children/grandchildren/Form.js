@@ -37,36 +37,21 @@ var Form = React.createClass({
 	// Here we render the function
 	render: function() {
 	    return (
-	    	<div className="query-form">
-	    		<h2>Search NYT</h2>
-	    		<form className="col s12" onSubmit={this.handleSubmit}>
-	    			<div className = "row">
-						<div className="input-field col s12">
-							<input id="topic" type="text" className="validate" 
-							onChange={this.handleChangeTopic} value={this.state.topic}/>
-							<label>Topic</label>
-						</div>	
-					</div>	
-
-					<div className = "row">
-						<div className="input-field col s12">
-							<input id="startYear" type="text" className="validate" 
-							onChange={this.handleChangeStartYear} value={this.state.startYear}/>
-							<label>Start Year</label>
-						</div>
-					</div>
-
-					<div className = "row">
-						<div className="input-field col s12">
-							<input id="endYear" type="text" className="validate" 
-							onChange={this.handleChangeEndYear} value={this.state.endYear}/>
-							<label>End Year</label>
-						</div>
-					</div>
-					<button className="btn waves-effect waves-light right" type="submit">Submit
-  					</button>
-				</form>
-	    	</div>
+	    	<form>
+				<div className="form-group">
+					<label for="">Search Term</label>
+					<input type="email" className="form-control" id="" placeholder="Topic"/>
+				</div>
+				<div className="form-group">
+					<label for="">Start Date</label>
+					<input type="password" className="form-control" id="" placeholder="Password"/>
+				</div>
+				<div className="form-group">
+					<label for="">End Date</label>
+					<input type="password" className="form-control" id="" placeholder="Password"/>
+				</div>
+				<button type="submit" className="btn btn-default">Submit</button>
+			</form>
 	    );
   	}
 });
