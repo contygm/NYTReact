@@ -21,11 +21,12 @@ var Form = React.createClass({
 
 		console.log(this.state);
 
-		//this.props.setTerms(this.state.topic, this.state.startYear, this.state.endYear);
+		this.props.setTerms(this.state.topic, this.state.startDate, this.state.endDate);
+
 		this.setState({
 			topic: "",
-			startYear: "",
-			endYear: ""
+			startDate: "",
+			endDate: ""
 		});
 	},
 	// Here we render the function

@@ -10,15 +10,13 @@ var helpers = require("./utils/helper");
 
 // Creating the Results component
 var Main = React.createClass({
-	// getInitialState: function(){
-	// 	return { 
-	// 		savedArticles: [],
-	// 		searchResults: [],
-	// 		topic: "",
-	// 		startYear: "",
-	// 		endYear: ""
-	// 	};
-	// },
+	getInitialState: function(){
+		return { 
+			topic: "",
+			startDate: "",
+			endDate: ""
+		};
+	},
 	// // render saved articles on load
 	// componentDidMount: function(){
 	// 	helpers.getSaved()
@@ -27,23 +25,25 @@ var Main = React.createClass({
 	// 		}.bind(this));
 	// },
 
-	// // update results component when search entered and get results
-	// componentDidUpdate: function(){
-	// 	//run nyt query with search terms
-	// 	helpers.runQuery(this.state.topic, this.state.startYear, this.state.endYear)
-	// 		.then(function(data){
-	// 			console.log("Query ran", data);
-	// 			this.setState({ searchResults: data});
-	// 		}.bind(this));
-	// },
-	// //get serch terms from form
-	// setSearchTerms: function(topic, startYear, endYear){
-	// 	this.setState({ 
-	// 		topic: topic,
-	// 		startYear: startYear,
-	// 		endYear: endYear
-	// 	})
-	// },
+	// update results component when search entered and get results
+	componentDidUpdate: function(){
+		//run nyt query with search terms
+		helpers.runQuery(this.state.topic, this.state.startDate, this.state.endDate)
+			.then(function(data){
+				console.log("Query ran", data);
+				this.setState({ searchResults: data});
+			}.bind(this));
+	},
+
+	//get serch terms from form
+	setTerms: function(topic, startDate, endDate){
+		this.setState({
+			topic: topic,
+			startDate: startDate,
+			endDate: endDate
+		});
+		console.log("main:" + topic + startDate + endDate)
+	},
 	// Here we render the function
 	render: function() {
 		return (
@@ -69,7 +69,7 @@ var Main = React.createClass({
 
 				{/*components  */ }
 				<div className="container">
-					<Search />	
+					<Search setTerms={this.setTerms}/>	
 					<Saved />
 					{/*<About  />*/}
 				</div>

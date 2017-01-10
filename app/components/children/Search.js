@@ -12,7 +12,7 @@ var Search = React.createClass({
 		return (
 			<div className="row">
 				{/* pass function & searchResults to components*/}
-				<Form />
+				<Form setTerms={this.props.setTerms}/>
 				<Results />
 			</div>
 		);
