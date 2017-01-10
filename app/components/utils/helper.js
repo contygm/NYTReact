@@ -14,15 +14,16 @@ var helper = {
     	var fixedEndDate = endDate + "1231";
 
 		return axios.get({
-			url: "https://api.nytimes.com/svc/search/v2/articlesearch.json",
-			data: {
+			url: "https://api.nytimes.com/svc/search/v2/articlesearch.jsonp",
+			headers: {'Access-Control-Allow-Origin': 'http://localhost:3000'},
+			params: {
 			    'api-key': authKey,
 				'q': fixedTopic,
 				'begin_date': fixedStartDate,
 				'end_date': fixedEndDate,
-				'response-format': "jsonp",
-			}
-		}).then(function(response){
+			}, 
+		})
+		.then(function(response){
 			console.log("Axios Results", response.data.results[0]);
 			return response.data.results.formatted[0];
 		})
