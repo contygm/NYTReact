@@ -14,7 +14,6 @@ var Form = React.createClass({
 		var id = event.target.id;
 		var newState = event.target.value;
 		this.setState({ [id] : newState});
-		console.log("id: " + event.target.id + " newState: " + event.target.value);
 	},
 	handleSubmit: function(event){
 		event.preventDefault();

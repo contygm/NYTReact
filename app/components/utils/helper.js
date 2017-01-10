@@ -3,6 +3,16 @@ var qs = require('qs');
 
 var authKey = "c91b91416829443690df9370e731436a";
 
+
+   
+function callOtherDomain() {
+  if(invocation) {    
+    invocation.open('GET', url, true);
+    invocation.onreadystatechange = handler;
+    invocation.send(); 
+  }
+}
+
 var helper = {
 
 	runQuery: function(topic, startDate, endDate){
@@ -13,21 +23,30 @@ var helper = {
     	var fixedStartDate = startDate + "0101";
     	var fixedEndDate = endDate + "1231";
 
-		return axios.get({
-			url: "https://api.nytimes.com/svc/search/v2/articlesearch.jsonp",
-			headers: {'Access-Control-Allow-Origin': true},
-			params: {
-			    'api-key': authKey,
-				'q': fixedTopic,
-				'begin_date': fixedStartDate,
-				'end_date': fixedEndDate,
-			}, 
-		})
-		.then(function(response){
-			console.log("Axios Results", response.data.results[0]);
-			return response.data.results.formatted[0];
-		})
-	},
+		var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+		url += '?' + $.param({
+		  'api-key': "c91b91416829443690df9370e731436a",
+		  'q': "ellen",
+		  'begin_date': "20000101",
+		  'end_date': "20020202"
+		});   
+
+		console.log(url);
+
+		var results;
+		
+		var invocation = new XMLHttpRequest();
+		invocation.responseType = "json";
+		invocation.onreadystatechange = function() {
+		    if (invocation.readyState === 4) {
+		      console.log(invocation.response);
+		      results = invocation.response;
+		    }
+		}
+		invocation.open('GET', url, true);
+		invocation.send();
+		return results;
+	}		
 };
 
 module.exports = helper;
