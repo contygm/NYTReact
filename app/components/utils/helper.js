@@ -26,41 +26,39 @@ var helper = {
 		});
 	},
 
-	// get saved articles
-	getSaved: function(){
-		return axios.get("/api/saved")
-			.then(function(results){
-				console.log("Saved Articles: ", results);
-				return results;
-			})
-	},
+	// // get saved articles
+	// getSaved: function(){
+	// 	return axios.get("/api/saved")
+	// 		.then(function(results){
+	// 			console.log("Saved Articles: ", results);
+	// 			return results;
+	// 		})
+	// },
 
-	// save new articles
-	postSaved: function(title, date, url){
-		var newArticle = { title: title, date: date, url: url};
+	// // save new articles
+	// postSaved: function(title, date, url){
+	// 	var newArticle = { title: title, date: date, url: url};
 
-		return axios.post("/api/saved", newArticle)
-			.then(function(response){
-				console.log("newArticle id: ", response.data._id);
-				return response.data._id;
-			});
-	}, 
-	// delete an article
-	deleteSaved: function(title, date, url){
-		return axios.delete("/api/saved", {
-			params: {
-				"title": title,
-				"date": date,
-				"url": url
-			}
-		}).then(function(results){
-			console.log("deletedSaved: ", results);
-			return results;
-		})
-	}
+	// 	return axios.post("/api/saved", newArticle)
+	// 		.then(function(response){
+	// 			console.log("newArticle id: ", response.data._id);
+	// 			return response.data._id;
+	// 		});
+	// }, 
+	// // delete an article
+	// deleteSaved: function(title, date, url){
+	// 	return axios.delete("/api/saved", {
+	// 		params: {
+	// 			"title": title,
+	// 			"date": date,
+	// 			"url": url
+	// 		}
+	// 	}).then(function(results){
+	// 		console.log("deletedSaved: ", results);
+	// 		return results;
+	// 	})
+	// }
 };
-
-
 
 module.exports = helper;
 

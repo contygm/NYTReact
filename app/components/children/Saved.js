@@ -7,7 +7,6 @@ var React = require("react");
 // Creating the saved articles component
 var Saved = React.createClass({	
 	
-	// Here we render the function
 	render: function() {
 	    return (
 			<div className="row">
@@ -19,6 +18,7 @@ var Saved = React.createClass({
 						<div className="panel-body list-group">
 							<div className="list-group-item">
 								<h3>Article Name</h3>
+							{/*date saved*/}
 								<a className="btn btn-info" href="#">Read more</a>
 								<a href="#" className="btn btn-danger">Delete</a>
 							</div>

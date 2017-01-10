@@ -61,7 +61,7 @@ var Main = React.createClass({
 				</nav>
 
 				{/* Jumbotron*/}
-				<div className="jumbotron">
+				<div className="jumbotron text-center">
 					<h1>New York Times Article Scrapper</h1>
 					<p>Search and save articles</p>
 					<p><a className="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>

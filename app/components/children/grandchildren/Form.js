@@ -1,39 +1,40 @@
 // Include React
 var React = require("react");
 
-
 // Creating the Results component
 var Form = React.createClass({ 
-	// getInitialState: function(){
-	// 	return {
-	// 		topic: "",
-	// 		startYear: "",
-	// 		endYear: ""
-	// 	}
-	// },
-	// handleChangeTopic: function(event){
-	// 	this.setState({topic: event.target.value});
-	// 	console.log("topic: " + event.target.value);
-	// },
-	// handleChangeStartYear: function(event){
-	// 	this.setState({startYear: event.target.value});
-	// 	console.log("startYear: " + event.target.value);
-	// },
-	// handleChangeEndYear: function(event){
-	// 	this.setState({endYear: event.target.value});
-	// 	console.log("endYear: " + event.target.value);
-	// },
-	// handleSubmit: function(event){
-	// 	event.preventDefault();
-	// 	console.log(this.state.topic, this.state.startYear, this.state.endYear);
+	getInitialState: function(){
+		return {
+			topic: "",
+			startDate: "",
+			endDate: ""
+		}
+	},
+	topicChange: function(event){
+		this.setState({topic: event.target.value});
+		console.log("topic: " + event.target.value);
+	},
+	startDateChange: function(event){
+		this.setState({startDate: event.target.value});
+		console.log("startYear: " + event.target.value);
+	},
+	endDateChange: function(event){
+		this.setState({endDate: event.target.value});
+		console.log("endYear: " + event.target.value);
+	},
+	handleSubmit: function(event){
+		event.preventDefault();
 
-	// 	this.props.setTerms(this.state.topic, this.state.startYear, this.state.endYear);
-	// 	this.setState({
-	// 		topic: "",
-	// 		startYear: "",
-	// 		endYear: ""
-	// 	});
-	// },
+
+		console.log(this.state.topic, this.state.startDate, this.state.endDate);
+
+		//this.props.setTerms(this.state.topic, this.state.startYear, this.state.endYear);
+		this.setState({
+			topic: "",
+			startYear: "",
+			endYear: ""
+		});
+	},
 	// Here we render the function
 	render: function() {
 	    return (
@@ -43,18 +44,19 @@ var Form = React.createClass({
 						Search the New York Times
 					</div>
 					<div className="panel-body">
-				    	<form>
+				    	<form onSubmit={this.handleSubmit}>
 							<div className="form-group">
-								<label for="">Search Term</label>
-								<input type="email" className="form-control" id="" placeholder="Topic"/>
+								<label for="topic">Search Term</label>
+								<input className="form-control" id="topic" placeholder="Topic" onChange={this.topicChange}/>
+							</div>
+						{/*date dropdown*/}
+							<div className="form-group">
+								<label for="startDate">Start Date</label>
+								<input type="number" className="form-control" id="startDate" placeholder="1983" onChange={this.startDateChange}/>
 							</div>
 							<div className="form-group">
-								<label for="">Start Date</label>
-								<input type="password" className="form-control" id="" placeholder="Password"/>
-							</div>
-							<div className="form-group">
-								<label for="">End Date</label>
-								<input type="password" className="form-control" id="" placeholder="Password"/>
+								<label for="endDate">End Date</label>
+								<input type="number" className="form-control" id="endDate" placeholder="2001" onChange={this.endDateChange}/>
 							</div>
 							<button type="submit" className="btn btn-warning">Submit</button>
 						</form>
