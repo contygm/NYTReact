@@ -14,7 +14,8 @@ var Main = React.createClass({
 		return { 
 			topic: "",
 			startDate: "",
-			endDate: ""
+			endDate: "",
+			searchResults: []
 		};
 	},
 	// // render saved articles on load

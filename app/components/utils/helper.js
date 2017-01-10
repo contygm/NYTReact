@@ -1,4 +1,5 @@
 var axios = require("axios");
+var qs = require('qs');
 
 var authKey = "c91b91416829443690df9370e731436a";
 
@@ -12,19 +13,24 @@ var helper = {
     	var fixedStartDate = startDate + "0101";
     	var fixedEndDate = endDate + "1231";
 
-    	// get articles based on topic, startYear & endYear
-		return axios.get("https://api.nytimes.com/svc/search/v2/articlesearch.json", {
-			params: {
-				"api-key": authKey,
-				"q": fixedTopic,
-				"begin_date": fixedStartDate,
-				"end_date": fixedEndDate
+		return axios.get({
+			url: "https://api.nytimes.com/svc/search/v2/articlesearch.json",
+			data: {
+			    'api-key': authKey,
+				'q': fixedTopic,
+				'begin_date': fixedStartDate,
+				'end_date': fixedEndDate,
+				'response-format': "jsonp",
 			}
-		}).then(function(results) {
-			console.log("Axios Results", results.data.response);
-			return results.data.response;
-		});
+		}).then(function(response){
+			console.log("Axios Results", response.data.results[0]);
+			return response.data.results.formatted[0];
+		})
 	},
+};
+
+module.exports = helper;
+
 
 	// // get saved articles
 	// getSaved: function(){
@@ -58,7 +64,3 @@ var helper = {
 	// 		return results;
 	// 	})
 	// }
-};
-
-module.exports = helper;
-
