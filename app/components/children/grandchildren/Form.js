@@ -10,23 +10,16 @@ var Form = React.createClass({
 			endDate: ""
 		}
 	},
-	topicChange: function(event){
-		this.setState({topic: event.target.value});
-		console.log("topic: " + event.target.value);
-	},
-	startDateChange: function(event){
-		this.setState({startDate: event.target.value});
-		console.log("startYear: " + event.target.value);
-	},
-	endDateChange: function(event){
-		this.setState({endDate: event.target.value});
-		console.log("endYear: " + event.target.value);
+	handleChange: function(event){
+		var id = event.target.id;
+		var newState = event.target.value;
+		this.setState({ [id] : newState});
+		console.log("id: " + event.target.id + " newState: " + event.target.value);
 	},
 	handleSubmit: function(event){
 		event.preventDefault();
 
-
-		console.log(this.state.topic, this.state.startDate, this.state.endDate);
+		console.log(this.state);
 
 		//this.props.setTerms(this.state.topic, this.state.startYear, this.state.endYear);
 		this.setState({
@@ -47,16 +40,16 @@ var Form = React.createClass({
 				    	<form onSubmit={this.handleSubmit}>
 							<div className="form-group">
 								<label for="topic">Search Term</label>
-								<input className="form-control" id="topic" placeholder="Topic" onChange={this.topicChange}/>
+								<input className="form-control" id="topic" placeholder="Topic" onChange={this.handleChange}/>
 							</div>
 						{/*date dropdown*/}
 							<div className="form-group">
 								<label for="startDate">Start Date</label>
-								<input type="number" className="form-control" id="startDate" placeholder="1983" onChange={this.startDateChange}/>
+								<input type="number" className="form-control" id="startDate" placeholder="1983" onChange={this.handleChange}/>
 							</div>
 							<div className="form-group">
 								<label for="endDate">End Date</label>
-								<input type="number" className="form-control" id="endDate" placeholder="2001" onChange={this.endDateChange}/>
+								<input type="number" className="form-control" id="endDate" placeholder="2001" onChange={this.handleChange}/>
 							</div>
 							<button type="submit" className="btn btn-warning">Submit</button>
 						</form>
