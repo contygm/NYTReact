@@ -15,7 +15,7 @@ var helper = {
 
 		return axios.get({
 			url: "https://api.nytimes.com/svc/search/v2/articlesearch.jsonp",
-			headers: {'Access-Control-Allow-Origin': 'http://localhost:3000'},
+			headers: {'Access-Control-Allow-Origin': true},
 			params: {
 			    'api-key': authKey,
 				'q': fixedTopic,
