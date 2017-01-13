@@ -29,8 +29,13 @@ var Main = React.createClass({
 	// update results component when search entered and get results
 	componentDidUpdate: function(){
 		//run nyt query with search terms
-		helpers.runQuery(this.state.topic, this.state.startDate, this.state.endDate)
-			.then(function(data){
+		// helpers.runQuery(this.state.topic, this.state.startDate, this.state.endDate)
+		// 	.then(function(data){
+		// 		console.log("Query ran", data);
+		// 		this.setState({ searchResults: data});
+		// 	}.bind(this));
+
+		helpers.runQuery(this.state.topic, this.state.startDate, this.state.endDate, function(data){
 				console.log("Query ran", data);
 				this.setState({ searchResults: data});
 			}.bind(this));

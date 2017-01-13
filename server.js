@@ -3,6 +3,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
+var request = require('request');
 
 // Require Article Schema
 var Article = require("./models/Article");
@@ -47,6 +48,27 @@ app.get("/api/saved", function(req, res) {
 	    }
 	    else {
 	      res.send(doc);
+	    }
+	});
+});
+
+app.get("/api/news/:q/:begin_date/:end_date", function(req, res) {
+
+	var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=c91b91416829443690df9370e731436a"
+
+	url += "&q=" + req.params.q + "&begin_date=" + req.params.begin_date;
+	url += "&end_date=" + req.params.end_date;
+
+	console.log(url);
+
+	request(url, function (err, response, body) {
+	    if (err) {
+	      console.log(err);
+	      res.send(err);
+	    } else {
+	      body = JSON.parse(body);
+	      console.log("parsed body ", body)
+	      res.json(body);
 	    }
 	});
 });
